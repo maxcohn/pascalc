@@ -20,8 +20,8 @@ def main():
     all_source = ''
     with open(sys.argv[1], 'r') as f:
         all_source = ''.join(f.readlines()) 
-    
-    ast = parse.parse(lex.tokenize(all_source))
 
+    ast = parse.parse(lex.tokenize(all_source))
+    print_ast(ast)
     render_ast(ast)
     

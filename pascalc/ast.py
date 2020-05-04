@@ -20,9 +20,18 @@ def render_ast(node: Node):
 
     dot.render(view=True)
 
+# counter to make sure nodes are unique TODO remove it, it's gross
+counter = 0
+
+# if this isn't a beautiful example of recursion, I don't know what is
 def _render_ast(node: Node, dot: Digraph):
-    node_ident = f'{node.type}{randint(0,1000000)}'
-    dot.node(node_ident, f'{node.type} - {",".join(map(lambda x: str(x), filter(lambda n: not isinstance(n, Node), node.args)))}')
+    global counter
+
+    node_ident = f'{node.type}{counter}'
+    counter += 1
+
+    # this line only exists in this state for my won amusement
+    dot.node(node_ident, f'{node.type} \n{",".join(map(lambda x: str(x), filter(lambda n: not isinstance(n, Node), node.args)))}')
 
     for arg in node.args:
         if isinstance(arg, Node):

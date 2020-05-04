@@ -5,7 +5,7 @@ class PLex(Lexer):
     tokens = {
         ID, NUM, RELOP, ADDOP, MULOP, ASSIGNOP, PROGRAM, VAR, ARRAY, INTEGER,
         REAL, FUNCTION, PROCEDURE, BEGIN, END, IF, THEN, ELSE, WHILE, DO, NOT,
-        MOD, AND, OR, DIV, NOTEQUAL, LTEQ, GTEQ
+        MOD, AND, OR, DIV, NOTEQUAL, LTEQ, GTEQ, RANGE, OF
     }
 
     literals = {';', ':', '[', ']', '(', ')', '.', ',', '-', '+', '=', '<', '>', '*', '/'}
@@ -17,11 +17,13 @@ class PLex(Lexer):
     NOTEQUAL = r'<>'
     LTEQ = r'<='
     GTEQ = r'>='
+    RANGE = r'\.\.'
     ASSIGNOP = r':='
 
     ID['program'] = PROGRAM
     ID['var'] = VAR
     ID['array'] = ARRAY
+    ID['OF'] = OF
     ID['integer'] = INTEGER
     ID['real'] = REAL
     ID['function'] = FUNCTION
